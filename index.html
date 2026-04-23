@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMU-SIC Web - Simulador Educativo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="logo">
+            <img src="emusic-icon.png" alt="Logo" height="32">
+            <h1>EMU-SIC Web</h1>
+        </div>
+        <nav class="controls">
+            <button id="btn-assemble" title="Ensamblar Código">Ensamblar</button>
+            <div class="divider"></div>
+            <button id="btn-step" title="Paso a Paso (F10)">Paso a Paso</button>
+            <button id="btn-run" title="Ejecutar (F5)">Ejecutar</button>
+            <button id="btn-pause" title="Pausar" disabled>Pausar</button>
+            <button id="btn-reset" title="Reiniciar (F2)">Reset</button>
+            <div class="divider"></div>
+            <select id="example-select">
+                <option value="">Cargar Ejemplo...</option>
+                <option value="examples/color_test.sic">Color Test</option>
+                <option value="examples/emusic.sic">Emu-Sic Intro</option>
+                <option value="examples/nombre.sic">Nombre</option>
+                <option value="examples/presentacion.sic">Presentación</option>
+            </select>
+            <div class="divider"></div>
+            <select id="speed-select">
+                <option value="1">Lento</option>
+                <option value="10">Normal</option>
+                <option value="100" selected>Rápido</option>
+                <option value="0">Max (No Delay)</option>
+            </select>
+            <div class="divider"></div>
+            <select id="docs-select">
+                <option value="">Documentación...</option>
+                <option value="docs/Manual_Video_SIC.pdf">Manual de Video</option>
+                <option value="docs/Manual_Ensamblador.pdf">Manual Ensamblador</option>
+                <option value="docs/DiagramaFlujo.pdf">Diagrama de Flujo</option>
+                <option value="docs/opcode.pdf">Tabla de Opcodes</option>
+            </select>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        <!-- Panel Izquierdo: Editor -->
+        <section class="panel editor-panel">
+            <div class="panel-header">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="editor">Editor</button>
+                    <button class="tab-btn" data-tab="listing">Listing</button>
+                </div>
+                <div class="file-info" id="file-name">nuevo.sic</div>
+            </div>
+            <div class="tab-content" id="tab-editor">
+                <textarea id="code-editor" spellcheck="false" placeholder="Escribe tu código SIC aquí..."></textarea>
+            </div>
+            <div class="tab-content hidden" id="tab-listing">
+                <div id="listing-view">
+                    <table id="listing-table">
+                        <thead>
+                            <tr>
+                                <th>Addr</th>
+                                <th>Value</th>
+                                <th>Source</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel Derecho: Registros y Estado -->
+        <aside class="panel sidebar-panel">
+            <div class="panel-header">Registros</div>
+            <div class="reg-grid">
+                <div class="reg-item">
+                    <label>PC</label>
+                    <input type="text" id="reg-pc" readonly value="00000">
+                    <span class="reg-base">OCT</span>
+                </div>
+                <div class="reg-item">
+                    <label>AC</label>
+                    <input type="text" id="reg-ac" readonly value="000000">
+                    <span class="reg-base">OCT</span>
+                </div>
+                <div class="reg-item">
+                    <label>IR</label>
+                    <input type="text" id="reg-ir" readonly value="000000">
+                    <span class="reg-base">OCT</span>
+                </div>
+                <div class="reg-item">
+                    <label>LF</label>
+                    <input type="text" id="reg-lf" readonly value="0" class="small">
+                </div>
+                <div class="reg-item">
+                    <label>MA</label>
+                    <input type="text" id="reg-ma" readonly value="00000">
+                    <span class="reg-base">OCT</span>
+                </div>
+                <div class="reg-item">
+                    <label>MD</label>
+                    <input type="text" id="reg-md" readonly value="000000">
+                    <span class="reg-base">OCT</span>
+                </div>
+                <div class="reg-item">
+                    <label>IA</label>
+                    <input type="text" id="reg-ia" readonly value="00000">
+                    <span class="reg-base">OCT</span>
+                </div>
+                <div class="reg-item">
+                    <label>IB</label>
+                    <input type="text" id="reg-ib" readonly value="00000">
+                    <span class="reg-base">OCT</span>
+                </div>
+            </div>
+
+            <div class="panel-header mt">Estado FSM</div>
+            <div class="fsm-status">
+                <div class="status-item">
+                    <label>Actual:</label>
+                    <span id="fsm-act">1</span>
+                </div>
+                <div class="status-item">
+                    <label>Siguiente:</label>
+                    <span id="fsm-sig">1</span>
+                </div>
+            </div>
+
+            <div class="panel-header mt">Salida de Video</div>
+            <div class="video-container">
+                <canvas id="video-canvas"></canvas>
+            </div>
+            <div class="video-controls">
+                <span>Modo: 40x25</span>
+            </div>
+        </aside>
+    </main>
+
+    <footer id="status-bar">
+        <div id="status-msg">Listo</div>
+        <div id="cursor-pos">Lin 1, Col 1</div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

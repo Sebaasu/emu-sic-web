@@ -1,0 +1,23 @@
+ORG 0
+
+; Inicializacion de registros índice
+    CLA ; limpia el acumulador
+    DTA ; IA = 0
+    DTB ; IB = 0
+    INICIO:
+    LAC IA NOMBRE
+    DAC IB 0o10000
+    INA
+    INB
+    ISZ TAMAÑO
+    JMP INICIO
+    HLT
+TAMAÑO: -7
+NOMBRE: 
+    HEX 0x0747; 'G'
+    HEX 0x2041; 'A'
+    HEX 0x2e42; 'B'
+    HEX 0x3752; 'R'
+    HEX 0x4349; 'I'
+    HEX 0x5245; 'E'
+    HEX 0x704C; 'L'

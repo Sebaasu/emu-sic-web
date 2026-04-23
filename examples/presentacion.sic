@@ -1,0 +1,268 @@
+    ORG 0
+
+START:
+    ; --- LINEA 1: "COMPUTADOR SIC 47 PASOS" ---
+    ; Posición: Fila 5, Col 28 -> Dirección Octal 0o10654
+    ; Color: Amarillo sobre Azul (HEX 0x0E00)
+    LAC C1_C
+    DAC 0o10654
+    LAC C1_O
+    DAC 0o10655
+    LAC C1_M
+    DAC 0o10656
+    LAC C1_P
+    DAC 0o10657
+    LAC C1_U
+    DAC 0o10660
+    LAC C1_T
+    DAC 0o10661
+    LAC C1_A
+    DAC 0o10662
+    LAC C1_D
+    DAC 0o10663
+    LAC C1_O
+    DAC 0o10664
+    LAC C1_R
+    DAC 0o10665
+    LAC C1_SPC
+    DAC 0o10666
+    LAC C1_S
+    DAC 0o10667
+    LAC C1_I
+    DAC 0o10670
+    LAC C1_C
+    DAC 0o10671
+    LAC C1_SPC
+    DAC 0o10672
+    LAC C1_4
+    DAC 0o10673
+    LAC C1_7
+    DAC 0o10674
+    LAC C1_SPC
+    DAC 0o10675
+    LAC C1_P
+    DAC 0o10676
+    LAC C1_A
+    DAC 0o10677
+    LAC C1_S
+    DAC 0o10700
+    LAC C1_O
+    DAC 0o10701
+    LAC C1_S
+    DAC 0o10702
+
+    ; --- LINEA 2: "SISTEMAS DIGITALES II - ETN 821" ---
+    ; Posición: Fila 8, Col 24 -> Dirección Octal 0o11230
+    ; Color: Blanco sobre Verde (HEX 0x1700)
+    LAC C2_S
+    DAC 0o11230
+    LAC C2_I
+    DAC 0o11231
+    LAC C2_S
+    DAC 0o11232
+    LAC C2_T
+    DAC 0o11233
+    LAC C2_E
+    DAC 0o11234
+    LAC C2_M
+    DAC 0o11235
+    LAC C2_A
+    DAC 0o11236
+    LAC C2_S
+    DAC 0o11237
+    LAC C2_SPC
+    DAC 0o11240
+    LAC C2_D
+    DAC 0o11241
+    LAC C2_I
+    DAC 0o11242
+    LAC C2_G
+    DAC 0o11243
+    LAC C2_I
+    DAC 0o11244
+    LAC C2_T
+    DAC 0o11245
+    LAC C2_A
+    DAC 0o11246
+    LAC C2_L
+    DAC 0o11247
+    LAC C2_E
+    DAC 0o11250
+    LAC C2_S
+    DAC 0o11251
+    LAC C2_SPC
+    DAC 0o11252
+    LAC C2_I
+    DAC 0o11253
+    LAC C2_I
+    DAC 0o11254
+    LAC C2_SPC
+    DAC 0o11255
+    LAC C2_DASH
+    DAC 0o11256
+    LAC C2_SPC
+    DAC 0o11257
+    LAC C2_E
+    DAC 0o11260
+    LAC C2_T
+    DAC 0o11261
+    LAC C2_N
+    DAC 0o11262
+    LAC C2_SPC
+    DAC 0o11263
+    LAC C2_8
+    DAC 0o11264
+    LAC C2_2
+    DAC 0o11265
+    LAC C2_1
+    DAC 0o11266
+
+    ; --- LINEA 3: "PROYECTO DE GRADO - ETN 1040" ---
+    ; Posición: Fila 11, Col 26 -> Dirección Octal 0o11612
+    ; Color: Blanco sobre Cyan (HEX 0x1F00)
+    LAC C3_P
+    DAC 0o11612
+    LAC C3_R
+    DAC 0o11613
+    LAC C3_O
+    DAC 0o11614
+    LAC C3_Y
+    DAC 0o11615
+    LAC C3_E
+    DAC 0o11616
+    LAC C3_C
+    DAC 0o11617
+    LAC C3_T
+    DAC 0o11620
+    LAC C3_O
+    DAC 0o11621
+    LAC C3_SPC
+    DAC 0o11622
+    LAC C3_D
+    DAC 0o11623
+    LAC C3_E
+    DAC 0o11624
+    LAC C3_SPC
+    DAC 0o11625
+    LAC C3_G
+    DAC 0o11626
+    LAC C3_R
+    DAC 0o11627
+    LAC C3_A
+    DAC 0o11630
+    LAC C3_D
+    DAC 0o11631
+    LAC C3_O
+    DAC 0o11632
+    LAC C3_SPC
+    DAC 0o11633
+    LAC C3_DASH
+    DAC 0o11634
+    LAC C3_SPC
+    DAC 0o11635
+    LAC C3_E
+    DAC 0o11636
+    LAC C3_T
+    DAC 0o11637
+    LAC C3_N
+    DAC 0o11640
+    LAC C3_SPC
+    DAC 0o11641
+    LAC C3_1
+    DAC 0o11642
+    LAC C3_0
+    DAC 0o11643
+    LAC C3_4
+    DAC 0o11644
+    LAC C3_0
+    DAC 0o11645
+
+    ; --- LINEA 4: "HOLA MUNDO" ---
+    ; Posición: Fila 15, Col 35 -> Dirección Octal 0o12323
+    ; Color: Blanco sobre Rojo (HEX 0x2700)
+    LAC C4_H
+    DAC 0o12323
+    LAC C4_O
+    DAC 0o12324
+    LAC C4_L
+    DAC 0o12325
+    LAC C4_A
+    DAC 0o12326
+    LAC C4_SPC
+    DAC 0o12327
+    LAC C4_M
+    DAC 0o12330
+    LAC C4_U
+    DAC 0o12331
+    LAC C4_N
+    DAC 0o12332
+    LAC C4_D
+    DAC 0o12333
+    LAC C4_O
+    DAC 0o12334
+
+    HLT
+
+; --- DEFINICION DE DATOS ---
+
+; Colores Linea 1 (Amarillo/Azul: 0x0E00)
+C1_C: HEX 0x0E43
+C1_O: HEX 0x0E4F
+C1_M: HEX 0x0E4D
+C1_P: HEX 0x0E50
+C1_U: HEX 0x0E55
+C1_T: HEX 0x0E54
+C1_A: HEX 0x0E41
+C1_D: HEX 0x0E44
+C1_R: HEX 0x0E52
+C1_S: HEX 0x0E53
+C1_I: HEX 0x0E49
+C1_4: HEX 0x0E34
+C1_7: HEX 0x0E37
+C1_SPC: HEX 0x0820 ; Azul sólido
+
+; Colores Linea 2 (Blanco/Verde: 0x1700)
+C2_S: HEX 0x1753
+C2_I: HEX 0x1749
+C2_T: HEX 0x1754
+C2_E: HEX 0x1745
+C2_M: HEX 0x174D
+C2_A: HEX 0x1741
+C2_D: HEX 0x1744
+C2_G: HEX 0x1747
+C2_L: HEX 0x174C
+C2_N: HEX 0x174E
+C2_DASH: HEX 0x172D
+C2_8: HEX 0x1738
+C2_2: HEX 0x1732
+C2_1: HEX 0x1731
+C2_SPC: HEX 0x1020 ; Verde sólido
+
+; Colores Linea 3 (Blanco/Cyan: 0x1F00)
+C3_P: HEX 0x1F50
+C3_R: HEX 0x1F52
+C3_O: HEX 0x1F4F
+C3_Y: HEX 0x1F59
+C3_E: HEX 0x1F45
+C3_C: HEX 0x1F43
+C3_T: HEX 0x1F54
+C3_D: HEX 0x1F44
+C3_G: HEX 0x1F47
+C3_A: HEX 0x1F41
+C3_N: HEX 0x1F4E
+C3_DASH: HEX 0x1F2D
+C3_1: HEX 0x1F31
+C3_0: HEX 0x1F30
+C3_4: HEX 0x1F34
+C3_SPC: HEX 0x1820 ; Cyan sólido
+
+; Colores Linea 4 (Blanco/Rojo: 0x2700)
+C4_H: HEX 0x2748
+C4_O: HEX 0x274F
+C4_L: HEX 0x274C
+C4_A: HEX 0x2741
+C4_M: HEX 0x274D
+C4_U: HEX 0x2755
+C4_N: HEX 0x274E
+C4_D: HEX 0x2744
+C4_SPC: HEX 0x2020 ; Rojo sólido
