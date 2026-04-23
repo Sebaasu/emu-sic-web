@@ -242,11 +242,12 @@ table {
 th {
     text-align: left;
     padding: 0.4rem;
-    background-color: rgba(0,0,0,0.3);
+    background-color: #323233; /* Color sólido (igual que el header) */
     position: sticky;
     top: 0;
     z-index: 10;
-    color: #888;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 td {
