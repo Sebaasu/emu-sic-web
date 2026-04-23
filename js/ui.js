@@ -61,11 +61,7 @@ export class SICUI {
                 btn.classList.add('active');
                 const target = btn.dataset.tab;
                 document.getElementById('tab-editor').classList.toggle('hidden', target !== 'editor');
-                document.getElementById('tab-listing').classList.toggle('hidden', target !== 'listing');
-                document.getElementById('tab-memory').classList.toggle('hidden', target !== 'memory');
                 document.getElementById('tab-about').classList.toggle('hidden', target !== 'about');
-                
-                if (target === 'memory') this.renderMemory();
             });
         });
     }
@@ -157,15 +153,12 @@ export class SICUI {
 
         this.renderVideo();
         this.highlightListing();
-        
-        if (!document.getElementById('tab-memory').classList.contains('hidden')) {
-            this.renderMemory();
-        }
+        this.renderMemory();
     }
 
     renderMemory() {
         const start = this.memStartAddr;
-        const end = Math.min(start + 128, 8192);
+        const end = Math.min(start + 64, 8192); // Reducido a 64 para mejor rendimiento en split view
         this.elems.memory.innerHTML = '';
         
         for (let i = start; i < end; i++) {
@@ -180,7 +173,7 @@ export class SICUI {
             tr.innerHTML = `
                 <td>${this.toOct(i, 5)}</td>
                 <td>${this.toOct(val, 6)}</td>
-                <td>0x${val.toString(16).toUpperCase().padStart(5, '0')}</td>
+                <td>${val.toString(16).toUpperCase().padStart(5, '0')}</td>
                 <td>${ascii}</td>
             `;
             this.elems.memory.appendChild(tr);
@@ -226,7 +219,7 @@ export class SICUI {
             tr.innerHTML = `
                 <td>${this.toOct(item.pc, 5)}</td>
                 <td>${this.toOct(item.word, 6)}</td>
-                <td>${item.line}</td>
+                <td title="${item.line}">${item.line}</td>
             `;
             this.elems.listing.appendChild(tr);
             this.listingRows[item.pc] = tr;
@@ -238,6 +231,7 @@ export class SICUI {
         if (this.listingRows && this.listingRows[this.cpu.pc]) {
             const activeRow = this.listingRows[this.cpu.pc];
             activeRow.classList.add('pc-highlight');
+            activeRow.scrollIntoView({ block: 'nearest' });
         }
     }
 

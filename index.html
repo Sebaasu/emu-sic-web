@@ -51,76 +51,85 @@
     </header>
 
     <main class="grid-container">
-        <!-- Panel Izquierdo: Editor -->
-        <section class="panel editor-panel">
-            <div class="panel-header">
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="editor">Editor</button>
-                    <button class="tab-btn" data-tab="listing">Listing</button>
-                    <button class="tab-btn" data-tab="memory">Memory</button>
-                    <button class="tab-btn" data-tab="about">About</button>
+        <!-- Panel Izquierdo: Editor y Depuración -->
+        <section class="panel main-panel">
+            <!-- Sección Superior: Editor -->
+            <div class="top-section">
+                <div class="panel-header">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="editor">Editor</button>
+                        <button class="tab-btn" data-tab="about">About</button>
+                    </div>
+                    <div class="file-info" id="file-name">nuevo.sic</div>
                 </div>
-                <div class="file-info" id="file-name">nuevo.sic</div>
-            </div>
-            <div class="tab-content" id="tab-editor">
-                <textarea id="code-editor" spellcheck="false" placeholder="Escribe tu código SIC aquí..."></textarea>
-            </div>
-            <div class="tab-content hidden" id="tab-listing">
-                <div id="listing-view">
-                    <table id="listing-table">
-                        <thead>
-                            <tr>
-                                <th>Addr</th>
-                                <th>Value</th>
-                                <th>Source</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div class="tab-content" id="tab-editor">
+                    <textarea id="code-editor" spellcheck="false" placeholder="Escribe tu código SIC aquí..."></textarea>
                 </div>
-            </div>
-            <div class="tab-content hidden" id="tab-memory">
-                <div class="memory-toolbar">
-                    <label>Ver desde:</label>
-                    <input type="text" id="mem-start-addr" value="00000" maxlength="5">
-                    <span class="hint">Octal (0-17777)</span>
-                </div>
-                <div id="memory-view">
-                    <table id="memory-table">
-                        <thead>
-                            <tr>
-                                <th>Addr</th>
-                                <th>Value (Oct)</th>
-                                <th>Value (Hex)</th>
-                                <th>ASCII</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div class="tab-content hidden" id="tab-about">
+                    <div class="about-content">
+                        <h2>EMU-SIC Web v1.0</h2>
+                        <p>EMU-SIC es un entorno de desarrollo integrado (IDE) y simulador educativo para el procesador <strong>Small Instructional Computer (SIC)</strong>.</p>
+                        <p>Esta versión web permite a los estudiantes explorar el funcionamiento interno de una computadora mediante una emulación ciclo a ciclo de su arquitectura, basada en el libro <em>"Digital Systems: Hardware Organization and Design"</em> de Hill & Peterson.</p>
+                        <hr>
+                        <h3>Arquitectura SIC</h3>
+                        <ul>
+                            <li>Palabra de 18 bits.</li>
+                            <li>Memoria de 8192 palabras.</li>
+                            <li>Direccionamiento de 13 bits.</li>
+                            <li>Registros: PC, AC, IR, MA, MD, IA, IB, LF.</li>
+                        </ul>
+                        <p>Desarrollado originalmente en Python/Tkinter y migrado a la web para facilitar su acceso educativo.</p>
+                        <hr>
+                        <p><strong>Autor:</strong> Sebastián (@Sebaasu)</p>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/Sebaasu" target="_blank">github.com/Sebaasu</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="tab-content hidden" id="tab-about">
-                <div class="about-content">
-                    <h2>EMU-SIC Web v1.0</h2>
-                    <p>EMU-SIC es un entorno de desarrollo integrado (IDE) y simulador educativo para el procesador <strong>Small Instructional Computer (SIC)</strong>.</p>
-                    <p>Esta versión web permite a los estudiantes explorar el funcionamiento interno de una computadora mediante una emulación ciclo a ciclo de su arquitectura, basada en el libro <em>"Digital Systems: Hardware Organization and Design"</em> de Hill & Peterson.</p>
-                    <hr>
-                    <h3>Arquitectura SIC</h3>
-                    <ul>
-                        <li>Palabra de 18 bits.</li>
-                        <li>Memoria de 8192 palabras.</li>
-                        <li>Direccionamiento de 13 bits.</li>
-                        <li>Registros: PC, AC, IR, MA, MD, IA, IB, LF.</li>
-                    </ul>
-                    <p>Desarrollado originalmente en Python/Tkinter y migrado a la web para facilitar su acceso educativo.</p>
-                    <hr>
-                    <p><strong>Autor:</strong> Sebastián (@Sebaasu)</p>
-                    <p><strong>GitHub:</strong> <a href="https://github.com/Sebaasu" target="_blank">github.com/Sebaasu</a></p>
+
+            <!-- Sección Inferior: Debug (Listing & Memory) -->
+            <div class="bottom-section">
+                <div class="debug-grid">
+                    <div class="debug-panel listing-panel">
+                        <div class="panel-header">Listing</div>
+                        <div class="table-container">
+                            <table id="listing-table">
+                                <thead>
+                                    <tr>
+                                        <th>Addr</th>
+                                        <th>Value</th>
+                                        <th>Source</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="debug-panel memory-panel">
+                        <div class="panel-header">
+                            Memory
+                            <div class="mem-search">
+                                <input type="text" id="mem-start-addr" value="00000" maxlength="5">
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="memory-table">
+                                <thead>
+                                    <tr>
+                                        <th>Addr</th>
+                                        <th>Val (Oct)</th>
+                                        <th>Val (Hex)</th>
+                                        <th>ASC</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Panel Derecho: Registros y Estado -->
+        <!-- Panel Derecho: Registros y Video -->
         <aside class="panel sidebar-panel">
             <div class="panel-header">Registros</div>
             <div class="reg-grid">
