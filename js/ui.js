@@ -219,7 +219,7 @@ export class SICUI {
             tr.innerHTML = `
                 <td>${this.toOct(item.pc, 5)}</td>
                 <td>${this.toOct(item.word, 6)}</td>
-                <td title="${item.line}">${item.line}</td>
+                <td title="${item.line.replace(/"/g, '&quot;')}">${item.line}</td>
             `;
             this.elems.listing.appendChild(tr);
             this.listingRows[item.pc] = tr;

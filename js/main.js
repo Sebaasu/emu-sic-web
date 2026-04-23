@@ -48,16 +48,14 @@ document.getElementById('btn-assemble').addEventListener('click', () => {
     ui.updateUI();
     ui.setStatus('Ensamblado y cargado con éxito');
 });
-...
-// Botón Reset
-document.getElementById('btn-reset').addEventListener('click', () => {
+
+// Botón Paso a Paso
+document.getElementById('btn-step').addEventListener('click', () => {
     stopRun();
-    cpu.reset();
-    const startPc = parseInt(document.getElementById('start-pc-input').value, 8) || 0;
-    cpu.pc = startPc;
+    cpu.step();
     ui.updateUI();
-    ui.setStatus('Simulador reiniciado');
 });
+
 // Botón Instrucción
 document.getElementById('btn-inst').addEventListener('click', () => {
     stopRun();
@@ -79,6 +77,8 @@ document.getElementById('btn-pause').addEventListener('click', () => {
 document.getElementById('btn-reset').addEventListener('click', () => {
     stopRun();
     cpu.reset();
+    const startPc = parseInt(document.getElementById('start-pc-input').value, 8) || 0;
+    cpu.pc = startPc;
     ui.updateUI();
     ui.setStatus('Simulador reiniciado');
 });
@@ -189,9 +189,15 @@ window.addEventListener('keydown', (e) => {
         e.preventDefault();
         cpu.step();
         ui.updateUI();
+    } else if (e.key === 'F11') {
+        e.preventDefault();
+        cpu.stepInstruction();
+        ui.updateUI();
     } else if (e.key === 'F2') {
         e.preventDefault();
         cpu.reset();
+        const startPc = parseInt(document.getElementById('start-pc-input').value, 8) || 0;
+        cpu.pc = startPc;
         ui.updateUI();
     }
 });
