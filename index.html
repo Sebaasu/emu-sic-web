@@ -57,6 +57,7 @@
                 <div class="tabs">
                     <button class="tab-btn active" data-tab="editor">Editor</button>
                     <button class="tab-btn" data-tab="listing">Listing</button>
+                    <button class="tab-btn" data-tab="memory">Memory</button>
                     <button class="tab-btn" data-tab="about">About</button>
                 </div>
                 <div class="file-info" id="file-name">nuevo.sic</div>
@@ -72,6 +73,26 @@
                                 <th>Addr</th>
                                 <th>Value</th>
                                 <th>Source</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-content hidden" id="tab-memory">
+                <div class="memory-toolbar">
+                    <label>Ver desde:</label>
+                    <input type="text" id="mem-start-addr" value="00000" maxlength="5">
+                    <span class="hint">Octal (0-17777)</span>
+                </div>
+                <div id="memory-view">
+                    <table id="memory-table">
+                        <thead>
+                            <tr>
+                                <th>Addr</th>
+                                <th>Value (Oct)</th>
+                                <th>Value (Hex)</th>
+                                <th>ASCII</th>
                             </tr>
                         </thead>
                         <tbody></tbody>

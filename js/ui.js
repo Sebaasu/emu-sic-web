@@ -17,6 +17,8 @@ export class SICUI {
             fsmSig: document.getElementById('fsm-sig'),
             video: document.getElementById('video-canvas'),
             listing: document.querySelector('#listing-table tbody'),
+            memory: document.querySelector('#memory-table tbody'),
+            memStart: document.getElementById('mem-start-addr'),
             status: document.getElementById('status-msg'),
             editor: document.getElementById('code-editor')
         };
@@ -39,12 +41,16 @@ export class SICUI {
         this.initTabs();
         this.videoCols = 40;
         this.initVideoGrid();
+        
+        this.memStartAddr = 0;
+        this.initMemoryEvents();
 
         // Seguimiento de valores anteriores para Highlight
         this.prevRegs = {
             pc: -1, ac: -1, ir: -1, lf: -1,
             ma: -1, md: -1, ia: -1, ib: -1
         };
+        this.prevMem = new Uint32Array(8192);
     }
 
     initTabs() {
@@ -56,8 +62,21 @@ export class SICUI {
                 const target = btn.dataset.tab;
                 document.getElementById('tab-editor').classList.toggle('hidden', target !== 'editor');
                 document.getElementById('tab-listing').classList.toggle('hidden', target !== 'listing');
+                document.getElementById('tab-memory').classList.toggle('hidden', target !== 'memory');
                 document.getElementById('tab-about').classList.toggle('hidden', target !== 'about');
+                
+                if (target === 'memory') this.renderMemory();
             });
+        });
+    }
+
+    initMemoryEvents() {
+        this.elems.memStart.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value, 8);
+            if (!isNaN(val) && val >= 0 && val < 8192) {
+                this.memStartAddr = val;
+                this.renderMemory();
+            }
         });
     }
 
@@ -138,6 +157,35 @@ export class SICUI {
 
         this.renderVideo();
         this.highlightListing();
+        
+        if (!document.getElementById('tab-memory').classList.contains('hidden')) {
+            this.renderMemory();
+        }
+    }
+
+    renderMemory() {
+        const start = this.memStartAddr;
+        const end = Math.min(start + 128, 8192);
+        this.elems.memory.innerHTML = '';
+        
+        for (let i = start; i < end; i++) {
+            const val = this.cpu.mem[i];
+            const isChanged = val !== this.prevMem[i];
+            const tr = document.createElement('tr');
+            if (isChanged) tr.classList.add('mem-changed');
+            
+            const char = (val & 0xFF);
+            const ascii = (char >= 32 && char <= 126) ? String.fromCharCode(char) : '.';
+            
+            tr.innerHTML = `
+                <td>${this.toOct(i, 5)}</td>
+                <td>${this.toOct(val, 6)}</td>
+                <td>0x${val.toString(16).toUpperCase().padStart(5, '0')}</td>
+                <td>${ascii}</td>
+            `;
+            this.elems.memory.appendChild(tr);
+            this.prevMem[i] = val;
+        }
     }
 
     renderVideo() {
