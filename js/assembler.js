@@ -26,6 +26,7 @@ export class SICAssembler {
         this.pc = 0;
         this.maxAddr = 0;
         this.errors = [];
+        this.firstOrg = null;
     }
 
     cleanLine(line) {
@@ -58,7 +59,8 @@ export class SICAssembler {
             instructions: this.instructions,
             listing: this.listingData,
             errors: this.errors,
-            symbols: this.symbols
+            symbols: this.symbols,
+            firstOrg: this.firstOrg
         };
     }
 
@@ -78,7 +80,9 @@ export class SICAssembler {
 
             const mnemonic = parts[0].toUpperCase();
             if (mnemonic === "ORG") {
-                currentPc = this.parseValue(parts[1]) || 0;
+                const val = this.parseValue(parts[1]);
+                currentPc = (val !== null) ? val : 0;
+                if (this.firstOrg === null) this.firstOrg = currentPc;
             } else if (mnemonic === "SYM") {
                 if (parts.length > 2) {
                     this.symbols[parts[1]] = this.parseValue(parts[2]);

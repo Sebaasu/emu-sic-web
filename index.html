@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMU-SIC Web - Simulador Educativo</title>
+    <link rel="icon" type="image/png" href="emusic-icon.png">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="dark-mode">
@@ -13,6 +14,10 @@
             <h1>EMU-SIC Web</h1>
         </div>
         <nav class="controls">
+            <div class="control-group">
+                <label>PC Inicio:</label>
+                <input type="text" id="start-pc-input" value="00000" maxlength="5" title="Dirección de inicio en Octal">
+            </div>
             <button id="btn-assemble" title="Ensamblar Código">Ensamblar</button>
             <div class="divider"></div>
             <button id="btn-step" title="Ciclo FSM (F10)">Ciclo FSM</button>

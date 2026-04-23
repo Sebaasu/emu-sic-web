@@ -28,26 +28,36 @@ document.getElementById('code-editor').value = defaultCode;
 document.getElementById('btn-assemble').addEventListener('click', () => {
     const source = document.getElementById('code-editor').value;
     const result = asm.assemble(source);
-    
+
     if (result.errors.length > 0) {
         ui.setStatus(result.errors[0], 'error');
         return;
     }
-    
+
+    // Si el ensamblador detectó un ORG, actualizamos el input de PC Inicio
+    if (result.firstOrg !== null) {
+        document.getElementById('start-pc-input').value = ui.toOct(result.firstOrg, 5);
+    }
+
+    const startPc = parseInt(document.getElementById('start-pc-input').value, 8) || 0;
+
     cpu.reset();
+    cpu.pc = startPc;
     cpu.mem.set(result.instructions);
     ui.renderListing(result.listing);
     ui.updateUI();
     ui.setStatus('Ensamblado y cargado con éxito');
 });
-
-// Botón Paso a Paso
-document.getElementById('btn-step').addEventListener('click', () => {
+...
+// Botón Reset
+document.getElementById('btn-reset').addEventListener('click', () => {
     stopRun();
-    cpu.step();
+    cpu.reset();
+    const startPc = parseInt(document.getElementById('start-pc-input').value, 8) || 0;
+    cpu.pc = startPc;
     ui.updateUI();
+    ui.setStatus('Simulador reiniciado');
 });
-
 // Botón Instrucción
 document.getElementById('btn-inst').addEventListener('click', () => {
     stopRun();
