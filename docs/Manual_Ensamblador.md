@@ -74,6 +74,5 @@ Puede referirse al diagrama FD_47Pasos.pdf para comprender las posibles combinac
 | **DTA/DTB** | 700100/140 | Transfiere AC a registro de índice A o B. |
 | **DFA/DFB** | 700040/060 | Transfiere registro de índice A o B al AC. |
 | **INA/INB** | 700120/160 | Incrementa registro de índice A o B. |
-| **IN/OUT** | 760000/740000| Entrada/Salida (UART/Keyboard). |
 
 *Ejemplo de combinación:* `CLA CMA ; Limpia y complementa (deja el AC en 777777)`
