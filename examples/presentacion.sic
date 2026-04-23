@@ -3,7 +3,7 @@
 START:
     ; --- LINEA 1: "COMPUTADOR SIC 47 PASOS" ---
     ; Posición: Fila 5, Col 28 -> Dirección Octal 0o10654
-    ; Color: Amarillo sobre Azul (HEX 0x0E00)
+    ; Color: Amarillo sobre Azul (DATA 0x0E00)
     LAC C1_C
     DAC 0o10654
     LAC C1_O
@@ -53,7 +53,7 @@ START:
 
     ; --- LINEA 2: "SISTEMAS DIGITALES II - ETN 821" ---
     ; Posición: Fila 8, Col 24 -> Dirección Octal 0o11230
-    ; Color: Blanco sobre Verde (HEX 0x1700)
+    ; Color: Blanco sobre Verde (DATA 0x1700)
     LAC C2_S
     DAC 0o11230
     LAC C2_I
@@ -119,7 +119,7 @@ START:
 
     ; --- LINEA 3: "PROYECTO DE GRADO - ETN 1040" ---
     ; Posición: Fila 11, Col 26 -> Dirección Octal 0o11612
-    ; Color: Blanco sobre Cyan (HEX 0x1F00)
+    ; Color: Blanco sobre Cyan (DATA 0x1F00)
     LAC C3_P
     DAC 0o11612
     LAC C3_R
@@ -179,7 +179,7 @@ START:
 
     ; --- LINEA 4: "HOLA MUNDO" ---
     ; Posición: Fila 15, Col 35 -> Dirección Octal 0o12323
-    ; Color: Blanco sobre Rojo (HEX 0x2700)
+    ; Color: Blanco sobre Rojo (DATA 0x2700)
     LAC C4_H
     DAC 0o12323
     LAC C4_O
@@ -206,63 +206,63 @@ START:
 ; --- DEFINICION DE DATOS ---
 
 ; Colores Linea 1 (Amarillo/Azul: 0x0E00)
-C1_C: HEX 0x0E43
-C1_O: HEX 0x0E4F
-C1_M: HEX 0x0E4D
-C1_P: HEX 0x0E50
-C1_U: HEX 0x0E55
-C1_T: HEX 0x0E54
-C1_A: HEX 0x0E41
-C1_D: HEX 0x0E44
-C1_R: HEX 0x0E52
-C1_S: HEX 0x0E53
-C1_I: HEX 0x0E49
-C1_4: HEX 0x0E34
-C1_7: HEX 0x0E37
-C1_SPC: HEX 0x0820 ; Azul sólido
+C1_C: DATA 0x0E43
+C1_O: DATA 0x0E4F
+C1_M: DATA 0x0E4D
+C1_P: DATA 0x0E50
+C1_U: DATA 0x0E55
+C1_T: DATA 0x0E54
+C1_A: DATA 0x0E41
+C1_D: DATA 0x0E44
+C1_R: DATA 0x0E52
+C1_S: DATA 0x0E53
+C1_I: DATA 0x0E49
+C1_4: DATA 0x0E34
+C1_7: DATA 0x0E37
+C1_SPC: DATA 0x0820 ; Azul sólido
 
 ; Colores Linea 2 (Blanco/Verde: 0x1700)
-C2_S: HEX 0x1753
-C2_I: HEX 0x1749
-C2_T: HEX 0x1754
-C2_E: HEX 0x1745
-C2_M: HEX 0x174D
-C2_A: HEX 0x1741
-C2_D: HEX 0x1744
-C2_G: HEX 0x1747
-C2_L: HEX 0x174C
-C2_N: HEX 0x174E
-C2_DASH: HEX 0x172D
-C2_8: HEX 0x1738
-C2_2: HEX 0x1732
-C2_1: HEX 0x1731
-C2_SPC: HEX 0x1020 ; Verde sólido
+C2_S: DATA 0x1753
+C2_I: DATA 0x1749
+C2_T: DATA 0x1754
+C2_E: DATA 0x1745
+C2_M: DATA 0x174D
+C2_A: DATA 0x1741
+C2_D: DATA 0x1744
+C2_G: DATA 0x1747
+C2_L: DATA 0x174C
+C2_N: DATA 0x174E
+C2_DASH: DATA 0x172D
+C2_8: DATA 0x1738
+C2_2: DATA 0x1732
+C2_1: DATA 0x1731
+C2_SPC: DATA 0x1020 ; Verde sólido
 
 ; Colores Linea 3 (Blanco/Cyan: 0x1F00)
-C3_P: HEX 0x1F50
-C3_R: HEX 0x1F52
-C3_O: HEX 0x1F4F
-C3_Y: HEX 0x1F59
-C3_E: HEX 0x1F45
-C3_C: HEX 0x1F43
-C3_T: HEX 0x1F54
-C3_D: HEX 0x1F44
-C3_G: HEX 0x1F47
-C3_A: HEX 0x1F41
-C3_N: HEX 0x1F4E
-C3_DASH: HEX 0x1F2D
-C3_1: HEX 0x1F31
-C3_0: HEX 0x1F30
-C3_4: HEX 0x1F34
-C3_SPC: HEX 0x1820 ; Cyan sólido
+C3_P: DATA 0x1F50
+C3_R: DATA 0x1F52
+C3_O: DATA 0x1F4F
+C3_Y: DATA 0x1F59
+C3_E: DATA 0x1F45
+C3_C: DATA 0x1F43
+C3_T: DATA 0x1F54
+C3_D: DATA 0x1F44
+C3_G: DATA 0x1F47
+C3_A: DATA 0x1F41
+C3_N: DATA 0x1F4E
+C3_DASH: DATA 0x1F2D
+C3_1: DATA 0x1F31
+C3_0: DATA 0x1F30
+C3_4: DATA 0x1F34
+C3_SPC: DATA 0x1820 ; Cyan sólido
 
 ; Colores Linea 4 (Blanco/Rojo: 0x2700)
-C4_H: HEX 0x2748
-C4_O: HEX 0x274F
-C4_L: HEX 0x274C
-C4_A: HEX 0x2741
-C4_M: HEX 0x274D
-C4_U: HEX 0x2755
-C4_N: HEX 0x274E
-C4_D: HEX 0x2744
-C4_SPC: HEX 0x2020 ; Rojo sólido
+C4_H: DATA 0x2748
+C4_O: DATA 0x274F
+C4_L: DATA 0x274C
+C4_A: DATA 0x2741
+C4_M: DATA 0x274D
+C4_U: DATA 0x2755
+C4_N: DATA 0x274E
+C4_D: DATA 0x2744
+C4_SPC: DATA 0x2020 ; Rojo sólido

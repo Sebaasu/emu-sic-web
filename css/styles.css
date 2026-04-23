@@ -222,6 +222,12 @@ select {
     text-align: right;
     width: 100%;
     outline: none;
+    transition: color 0.2s;
+}
+
+.reg-item input.changed {
+    color: #ff9800; /* Naranja brillante para cambios */
+    font-weight: bold;
 }
 
 .reg-item .small {

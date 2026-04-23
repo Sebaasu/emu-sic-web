@@ -39,6 +39,12 @@ export class SICUI {
         this.initTabs();
         this.videoCols = 40;
         this.initVideoGrid();
+
+        // Seguimiento de valores anteriores para Highlight
+        this.prevRegs = {
+            pc: -1, ac: -1, ir: -1, lf: -1,
+            ma: -1, md: -1, ia: -1, ib: -1
+        };
     }
 
     initTabs() {
@@ -56,7 +62,6 @@ export class SICUI {
     }
 
     initVideoGrid() {
-        // En lugar de canvas, usaremos una rejilla de texto para mayor fidelidad de fuentes
         const container = document.querySelector('.video-container');
         container.innerHTML = '';
         this.videoGrid = document.createElement('div');
@@ -98,15 +103,36 @@ export class SICUI {
     }
 
     updateUI() {
-        this.elems.pc.value = this.toOct(this.cpu.pc, 5);
-        this.elems.ac.value = this.toOct(this.cpu.ac, 6);
-        this.elems.ir.value = this.toOct(this.cpu.ir, 6);
-        this.elems.lf.value = this.cpu.lf;
-        this.elems.ma.value = this.toOct(this.cpu.ma, 5);
-        this.elems.md.value = this.toOct(this.cpu.md, 6);
-        this.elems.ia.value = this.toOct(this.cpu.ia, 5);
-        this.elems.ib.value = this.toOct(this.cpu.ib, 5);
-        
+        const regs = {
+            pc: this.cpu.pc,
+            ac: this.cpu.ac,
+            ir: this.cpu.ir,
+            lf: this.cpu.lf,
+            ma: this.cpu.ma,
+            md: this.cpu.md,
+            ia: this.cpu.ia,
+            ib: this.cpu.ib
+        };
+
+        for (const [key, val] of Object.entries(regs)) {
+            const el = this.elems[key];
+            const isChanged = val !== this.prevRegs[key];
+
+            if (key === 'lf') {
+                el.value = val;
+            } else {
+                el.value = this.toOct(val, (key === 'ac' || key === 'ir' || key === 'md') ? 6 : 5);
+            }
+
+            if (isChanged) {
+                el.classList.add('changed');
+            } else {
+                el.classList.remove('changed');
+            }
+
+            this.prevRegs[key] = val;
+        }
+
         this.elems.fsmAct.textContent = this.cpu.est_act;
         this.elems.fsmSig.textContent = this.cpu.est_sig;
 
@@ -164,8 +190,6 @@ export class SICUI {
         if (this.listingRows && this.listingRows[this.cpu.pc]) {
             const activeRow = this.listingRows[this.cpu.pc];
             activeRow.classList.add('pc-highlight');
-            // Opcional: scroll suave hasta la fila activa
-            // activeRow.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
     }
 

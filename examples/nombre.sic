@@ -14,10 +14,10 @@ ORG 0
     HLT
 TAMAÑO: -7
 NOMBRE: 
-    HEX 0x0747; 'G'
-    HEX 0x2041; 'A'
-    HEX 0x2e42; 'B'
-    HEX 0x3752; 'R'
-    HEX 0x4349; 'I'
-    HEX 0x5245; 'E'
-    HEX 0x704C; 'L'
+    DATA 0x0747; 'G'
+    DATA 0x2041; 'A'
+    DATA 0x2e42; 'B'
+    DATA 0x3752; 'R'
+    DATA 0x4349; 'I'
+    DATA 0x5245; 'E'
+    DATA 0x704C; 'L'

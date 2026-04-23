@@ -64,17 +64,17 @@ START:
 ; Negro: 0, Azul: 1, Verde: 2, Cyan: 3, Rojo: 4, Magenta: 5, Amarillo: 6, Blanco: 7
 ; Formato: [BG:3][FG:3][ASCII:8] -> Bits 13:11, 10:8, 7:0
 
-C_C:   HEX 0x0743  ; BG:0 FG:7 (Blanco/Negro)
-C_O:   HEX 0x024F  ; BG:0 FG:2 (Verde/Negro)
-C_M:   HEX 0x034D  ; BG:0 FG:3 (Cyan/Negro)
-C_P:   HEX 0x0450  ; BG:0 FG:4 (Rojo/Negro)
-C_U:   HEX 0x0555  ; BG:0 FG:5 (Magenta/Negro)
-C_T:   HEX 0x0654  ; BG:0 FG:6 (Amarillo/Negro)
-C_A:   HEX 0x0F41  ; BG:1 FG:7 (Blanco/Azul)
-C_D:   HEX 0x3844  ; BG:7 FG:0 (Negro/Blanco) - Bits 13:11 = 111, 10:8 = 000
-C_O2:  HEX 0x344F  ; BG:6 FG:4 (Rojo/Amarillo)
-C_R:   HEX 0x1952  ; BG:3 FG:1 (Azul/Cyan)
-C_SPC: HEX 0x0020  ; Espacio
-C_S:   HEX 0x2A53  ; BG:5 FG:2 (Verde/Magenta)
-C_I:   HEX 0x2749  ; BG:4 FG:7 (Blanco/Rojo)
-C_C2:  HEX 0x0E43  ; BG:1 FG:6 (Amarillo/Azul)
+C_C:   DATA 0x0743  ; BG:0 FG:7 (Blanco/Negro)
+C_O:   DATA 0x024F  ; BG:0 FG:2 (Verde/Negro)
+C_M:   DATA 0x034D  ; BG:0 FG:3 (Cyan/Negro)
+C_P:   DATA 0x0450  ; BG:0 FG:4 (Rojo/Negro)
+C_U:   DATA 0x0555  ; BG:0 FG:5 (Magenta/Negro)
+C_T:   DATA 0x0654  ; BG:0 FG:6 (Amarillo/Negro)
+C_A:   DATA 0x0F41  ; BG:1 FG:7 (Blanco/Azul)
+C_D:   DATA 0x3844  ; BG:7 FG:0 (Negro/Blanco) - Bits 13:11 = 111, 10:8 = 000
+C_O2:  DATA 0x344F  ; BG:6 FG:4 (Rojo/Amarillo)
+C_R:   DATA 0x1952  ; BG:3 FG:1 (Azul/Cyan)
+C_SPC: DATA 0x0020  ; Espacio
+C_S:   DATA 0x2A53  ; BG:5 FG:2 (Verde/Magenta)
+C_I:   DATA 0x2749  ; BG:4 FG:7 (Blanco/Rojo)
+C_C2:  DATA 0x0E43  ; BG:1 FG:6 (Amarillo/Azul)
