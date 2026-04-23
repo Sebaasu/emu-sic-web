@@ -48,6 +48,13 @@ document.getElementById('btn-step').addEventListener('click', () => {
     ui.updateUI();
 });
 
+// Botón Instrucción
+document.getElementById('btn-inst').addEventListener('click', () => {
+    stopRun();
+    cpu.stepInstruction();
+    ui.updateUI();
+});
+
 // Botón Ejecutar
 document.getElementById('btn-run').addEventListener('click', () => {
     startRun();
@@ -101,6 +108,14 @@ document.getElementById('docs-select').addEventListener('change', (e) => {
         window.open(url, '_blank');
         e.target.value = ""; // Resetear selector
     }
+});
+
+// Botón Modo Video
+document.getElementById('btn-video-mode').addEventListener('click', (e) => {
+    const is40 = ui.videoCols === 40;
+    const newCols = is40 ? 80 : 40;
+    ui.setVideoMode(newCols);
+    e.target.textContent = `Cambiar Modo (${is40 ? '80x25' : '40x25'})`;
 });
 
 function startRun() {

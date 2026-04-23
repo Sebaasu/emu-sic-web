@@ -207,6 +207,18 @@ export class SICProcessor {
         return this.est_act;
     }
 
+    stepInstruction() {
+        // Ejecutar al menos un ciclo
+        this.step();
+        // Continuar hasta volver al estado de Fetch (2) o Halt (28)
+        let count = 0;
+        while (this.est_act !== 2 && this.est_act !== 28 && count < 100) {
+            this.step();
+            count++;
+        }
+        return this.est_act;
+    }
+
     loadProgram(instructions, startAddr = 0) {
         for (let i = 0; i < instructions.length; i++) {
             if (startAddr + i < 8192) {

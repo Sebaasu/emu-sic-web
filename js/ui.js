@@ -37,6 +37,7 @@ export class SICUI {
         }, 500);
 
         this.initTabs();
+        this.videoCols = 40;
         this.initVideoGrid();
     }
 
@@ -49,6 +50,7 @@ export class SICUI {
                 const target = btn.dataset.tab;
                 document.getElementById('tab-editor').classList.toggle('hidden', target !== 'editor');
                 document.getElementById('tab-listing').classList.toggle('hidden', target !== 'listing');
+                document.getElementById('tab-about').classList.toggle('hidden', target !== 'about');
             });
         });
     }
@@ -59,17 +61,20 @@ export class SICUI {
         container.innerHTML = '';
         this.videoGrid = document.createElement('div');
         this.videoGrid.className = 'video-grid-dom';
+        if (this.videoCols === 80) this.videoGrid.classList.add('mode-80');
+        
         this.videoGrid.style.display = 'grid';
-        this.videoGrid.style.gridTemplateColumns = 'repeat(40, 1fr)';
+        this.videoGrid.style.gridTemplateColumns = `repeat(${this.videoCols}, 1fr)`;
         this.videoGrid.style.width = '100%';
-        this.videoGrid.style.aspectRatio = '40/25';
+        this.videoGrid.style.aspectRatio = `${this.videoCols}/25`;
         this.videoGrid.style.backgroundColor = 'black';
         this.videoGrid.style.fontFamily = 'monospace';
-        this.videoGrid.style.fontSize = '12px';
+        this.videoGrid.style.fontSize = this.videoCols === 80 ? '8px' : '12px';
         this.videoGrid.style.lineHeight = '1';
 
         this.cells = [];
-        for (let i = 0; i < 1000; i++) {
+        const numCells = this.videoCols * 25;
+        for (let i = 0; i < numCells; i++) {
             const cell = document.createElement('span');
             cell.textContent = ' ';
             cell.style.display = 'flex';
@@ -80,6 +85,12 @@ export class SICUI {
             this.cells.push(cell);
         }
         container.appendChild(this.videoGrid);
+    }
+
+    setVideoMode(cols) {
+        this.videoCols = cols;
+        this.initVideoGrid();
+        this.renderVideo();
     }
 
     toOct(val, digits = 6) {
@@ -104,8 +115,10 @@ export class SICUI {
     }
 
     renderVideo() {
-        for (let i = 0; i < 1000; i++) {
+        const numCells = this.videoCols * 25;
+        for (let i = 0; i < numCells; i++) {
             const addr = 4096 + i;
+            if (addr >= 8192) break;
             const w = this.cpu.mem[addr];
             const charCode = w & 0xFF;
             const attr = (w >> 8) & 0xFF;
@@ -116,6 +129,8 @@ export class SICUI {
             const bl = (attr >> 7) & 0x01;
 
             const cell = this.cells[i];
+            if (!cell) continue;
+            
             cell.textContent = (charCode >= 32 && charCode <= 126) ? String.fromCharCode(charCode) : ' ';
             cell.style.color = br ? this.brightColors[fg] : this.colors[fg];
             cell.style.backgroundColor = this.colors[bg];
