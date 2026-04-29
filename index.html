@@ -6,6 +6,7 @@
     <title>EMU-SIC Web - Simulador Educativo</title>
     <link rel="icon" type="image/png" href="emusic-icon.png">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.2/ace.js"></script>
 </head>
 <body class="dark-mode">
     <header>
@@ -65,10 +66,15 @@
                         <button class="tab-btn active" data-tab="editor">Editor</button>
                         <button class="tab-btn" data-tab="about">About</button>
                     </div>
+                    <div class="editor-actions">
+                        <button id="btn-load-local" class="small-btn" title="Cargar archivo .sic desde tu PC">Abrir</button>
+                        <button id="btn-save-local" class="small-btn" title="Guardar código como archivo .sic">Guardar</button>
+                        <input type="file" id="file-selector" accept=".sic,.txt" style="display:none">
+                    </div>
                     <div class="file-info" id="file-name">nuevo.sic</div>
                 </div>
                 <div class="tab-content" id="tab-editor">
-                    <textarea id="code-editor" spellcheck="false" placeholder="Escribe tu código SIC aquí..."></textarea>
+                    <div id="editor-container"></div>
                 </div>
                 <div class="tab-content hidden" id="tab-about">
                     <div class="about-content">

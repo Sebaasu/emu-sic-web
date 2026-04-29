@@ -19,8 +19,7 @@ export class SICUI {
             listing: document.querySelector('#listing-table tbody'),
             memory: document.querySelector('#memory-table tbody'),
             memStart: document.getElementById('mem-start-addr'),
-            status: document.getElementById('status-msg'),
-            editor: document.getElementById('code-editor')
+            status: document.getElementById('status-msg')
         };
 
         this.colors = [
